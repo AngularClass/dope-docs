@@ -1,6 +1,6 @@
 import { ModuleWithProviders, Type, Component, NgModule } from '@angular/core'
 import { UIGuide, ResolvedUIGuideSandbox, UIGuideExample } from './interfaces'
-import flatten from 'lodash/flatten'
+const flatten = require('lodash.flatten')
 
 export function getModuleForUIGuides(
   giventModule: ModuleWithProviders | Type<any>,
@@ -15,10 +15,9 @@ export function getModuleForUIGuides(
   })))))
 
   const components = componentsWithIds.reduce((all, next) => {
-    return {
-      ...all,
-      ...{[next.id]: next.component}
-    }
+    return Object.assign({}, all, {
+      [next.id]: next.component
+    })
   }, {})
 
   const ngModule = generateNgModule(giventModule, componentsWithIds.map(e => e.component))

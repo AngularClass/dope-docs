@@ -23,7 +23,10 @@
     "types": [
       "node",
       "mocha",
-      "chai"
+      "chai",
+      "webpack",
+      "webpack-dev-server",
+      "commander"
     ]
   }
 }

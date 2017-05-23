@@ -17,10 +17,8 @@ export class UIGuideSerivce {
     this.uiGuides = uiGuides.reduce<IdMap<UIGuide>>(this.byId, {})
     /** turn examples into a map */
     this.uiGuideExamples = uiGuides.reduce<IdMap<UIGuideExample>>((all, next) => {
-      return {
-        ...all,
-        ...next.examples.reduce<IdMap<UIGuideExample>>(this.byId, {})
-      }
+      const examples = next.examples.reduce<IdMap<UIGuideExample>>(this.byId, {})
+      return Object.assign({}, all, examples)
     }, {})
   }
   
@@ -41,10 +39,10 @@ export class UIGuideSerivce {
   }
 
   private byId<T extends {id: string}>(all: IdMap<T> = {}, next: T): IdMap<T> {
-    return {...all, ...{[next.id]: next}}
+    return Object.assign({}, all, {[next.id]: next})
   }
 }
 
 export function provideUIGuides(uiGuides: UIGuide[]) {
-  return {provide: UIGUIDES, useValue: uiGuides}
+  return {provide: UI_GUIDES, useValue: uiGuides}
 }

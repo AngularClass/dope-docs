@@ -7,10 +7,13 @@ const moduleExternals = require('webpack-node-externals')
 
 module.exports = (envOptions = {}) => {
   return ({
-    entry: root('./src/index.ts'),
+    entry: {
+      'ui-guide': root('./src/index.ts'),
+      cli: root('./src/cli.ts')
+    },
     output: {
       path: root('dist'),
-      filename: 'bundle.js'
+      filename: '[name].js'
     },
     target: 'web',
     externals: [moduleExternals()],
