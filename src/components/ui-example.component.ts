@@ -12,11 +12,11 @@ import {
 } from '@angular/core'
 
 @Component({
-  selector: 'ui-guide-renderer',
+  selector: 'ui-example',
   template: `
-    <div class="example row middle-xs">
+    <div class="example row">
       <div class="title">
-        <h2>{{example.uiGuideName}} : {{example.name}}</h2>
+        <h2>{{example.name}}</h2>
       </div>
       <div class="description">
         <p>{{example.description}}</p>
@@ -32,21 +32,22 @@ import {
   styles: [`
     .example {
       flex-direction: column;
-      height: 100%;
+      padding-left: 4rem;
+      padding-top: 1.5rem;
     }
     .title {
       margin-bottom: 3rem;
     }
     .title * {
       font-size: 3.5rem;
-      font-weight: 500;
+      font-weight: 300;
     }
     .description {
       margin-bottom: 3rem;
     }
     .description p {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: 100;
     }
     .source {
       font-size: 1.5rem;
@@ -57,7 +58,7 @@ import {
     }
   `]
 })
-export class UIGuideRendererComponent implements OnDestroy {
+export class UIExampleComponent implements OnDestroy {
   example: UIGuideExample = {id: '', description: '', name: '', uiGuideName: '', template: ''}
   private ref: ComponentRef<any>
 
@@ -77,15 +78,14 @@ export class UIGuideRendererComponent implements OnDestroy {
     }
   }
 
-  @Input() set exampleId(id: string) {
-    if (!id || typeof id !== 'string') {
+  @Input() set guideExample(example: UIGuideExample) {
+    if (!example) {
       return
     }
 
     this.refresh()
-    this.example = this.uiGuideService.getUIGuideExample(id)
-
-    const {factory, injector} = this.sandboxService.compilerUIGuide(id, this.injector)
+    this.example = example
+    const {factory, injector} = this.sandboxService.compilerUIGuide(example.id, this.injector)
     this.ref = this.exampleConatiner.createComponent(factory, 0, injector, [])
   }
 

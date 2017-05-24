@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core'
 import {Routes, RouterModule} from '@angular/router'
-import { UIGuidePreviewView, UIGuideRouterEntryView } from './views'
+import { UIGuidePreviewView, UIGuideRouterEntryView, ComponentsView } from './views'
 
 export const routes: Routes = [
   {
@@ -8,7 +8,16 @@ export const routes: Routes = [
     component: UIGuideRouterEntryView,
     children: [
       {
-        path: ':uiGuide/:exampleId',
+        path: '',
+        redirectTo: '/components',
+        pathMatch: 'full'
+      },
+      {
+        path: 'components',
+        component: ComponentsView
+      },
+      {
+        path: ':guideId',
         component: UIGuidePreviewView
       }
     ]
