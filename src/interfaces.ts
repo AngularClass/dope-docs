@@ -23,6 +23,7 @@ export interface UIGuide {
   id: string
   name: string
   description: string
+  api: ComponentAPI
   examples: UIGuideExample[]
   imports?: any[]
   declarations?: any[]
@@ -72,4 +73,29 @@ export interface DevServerConfig {
   watchOptions?: any
   https?: boolean
   publicPath: string
+}
+
+export interface ComponentInput {
+  /** the name of the @Inpout */
+  name: string
+  /** the value type of the input */
+  type: 'string'|'object'|'number'|'boolean'|'array'
+  /** input description */
+  description: string
+  /** the default value of the input if any */
+  default?: string
+}
+
+export interface ComponentOuput {
+  /** the name of the output */
+  name: string
+  /** describe when this event is fired */
+  description: string
+  /** args passed through output if any */
+  args?: string
+}
+
+export interface ComponentAPI {
+  inputs: ComponentInput[]
+  outputs: ComponentOuput[]
 }

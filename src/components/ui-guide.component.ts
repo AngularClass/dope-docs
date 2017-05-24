@@ -1,6 +1,6 @@
 import { UIGuideSandboxService, UIGuideSerivce } from '../services'
 import { UIGuideExample } from '../interfaces'
-import { UIGuide } from '../../dist/cli/interfaces'
+import { UIGuide } from '../interfaces'
 import {
   Component,
   ComponentRef,
@@ -28,6 +28,9 @@ import {
         <ui-example [guideExample]="example">
         </ui-example>
       </div>
+      <div class="api">
+        <ui-api [api]="guide.api"></ui-api>
+      </div>
     </div>
   `,
   styles: [`
@@ -43,7 +46,7 @@ import {
   `]
 })
 export class UIGuideComponent {
-  guide: UIGuide = {id: '', name: '', examples: [], description: ''}
+  guide: UIGuide = {id: '', name: '', examples: [], description: '', api: {inputs: [], outputs: []}}
   
   constructor(
     private sandboxService: UIGuideSandboxService,

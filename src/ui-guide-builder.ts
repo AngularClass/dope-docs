@@ -1,4 +1,4 @@
-import { UIGuideSandbox, UIGuide, UIGuideExample, UIGuideExampleConfig } from './interfaces'
+import { UIGuideSandbox, UIGuide, UIGuideExample, UIGuideExampleConfig, ComponentAPI } from './interfaces'
 import { bootstrap } from './boostrap'
 const slugify = require('slugify')
 
@@ -11,13 +11,14 @@ const GuideIDS: {[id: string]: string[]} = {}
 export class UIGuideBuilder implements UIGuide {
   id: string
   examples: UIGuideExample[] = []
-  
-  constructor(public name: string, public description: string) {
+
+  constructor(public name: string, public description: string, public api: ComponentAPI) {
     const id = slugify(name).toLowerCase()
 
     if (GuideIDS[id]) {
       throw new Error(`You already have a UI Guide with the name of ${name}`)
     }
+
     GuideIDS[id] = []
     this.id = id
   }
@@ -55,6 +56,10 @@ export class UIGuideBuilder implements UIGuide {
   }
 }
 
-export function uiGuideOn(component: string, description: string): UIGuideBuilder {
-  return new UIGuideBuilder(component, description)
+export function uiGuideOn(
+  component: string,
+  description: string,
+  api: ComponentAPI
+): UIGuideBuilder {
+  return new UIGuideBuilder(component, description, api)
 }

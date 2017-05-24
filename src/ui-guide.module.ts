@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { UIGuideSandboxService, UIGuideSerivce } from './services'
-import { UIExampleComponent, UIGuideComponent, UIGudiesListComponent } from './components'
+import { UIExampleComponent, UIGuideComponent, UIGudiesListComponent, UIApiComponent } from './components'
 import { ComponentsView, UIGuidePreviewView, UIGuideRootView, UIGuideRouterEntryView } from './views'
 import { Routing } from './routes'
 
@@ -27,7 +27,8 @@ import { Routing } from './routes'
     UIGuideRouterEntryView,
     UIGuideRootView,
     UIGuidePreviewView,
-    ComponentsView
+    ComponentsView,
+    UIApiComponent
   ],
   entryComponents: [
     UIGuidePreviewView,
