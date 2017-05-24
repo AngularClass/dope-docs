@@ -9,7 +9,7 @@ import { NgModuleRef } from '@angular/core'
 /** boostrap the UI guide app */
 export function bootstrap(sandBox: UIGuideSandbox): Promise<NgModuleRef<UIGuideModule>> {
   /** grab all the ui guides */
-  const uiGuides= sandBox.loadUIGuides()
+  const uiGuides = sandBox.loadUIGuides()
   /** resolve all the ui guide components and ng module */
   const resolved = getModuleForUIGuides(sandBox.ngModule, uiGuides)
   

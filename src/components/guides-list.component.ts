@@ -4,7 +4,7 @@ import { Component , Input } from '@angular/core'
   selector: 'ui-guides-list',
   template: `
     <div class="ui-guides-list">
-      <div class="title link">
+      <div class="title link" [routerLink]="['/', 'components']">
         Components
       </div>
       <div
@@ -34,6 +34,7 @@ import { Component , Input } from '@angular/core'
       background-color: #E91E63;
       color: #FAFAFA;
       padding: 1.4rem 0px;
+      position: fixed;
     }
     .title {
       font-size: 1.5rem;

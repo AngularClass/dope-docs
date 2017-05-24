@@ -15,7 +15,15 @@ import {
 @Component({
   selector: 'ui-guide',
   template: `
-    <div class="guide row">
+    <div class="guide">
+      <div class="guide-text">
+        <div class="title">
+          {{guide.name}}
+        </div>
+        <div class="guide-description">
+          <p>{{guide.description}}</p>
+        </div>
+      </div>
       <div class="example" *ngFor="let example of guide.examples">
         <ui-example [guideExample]="example">
         </ui-example>
@@ -23,13 +31,19 @@ import {
     </div>
   `,
   styles: [`
-    .example {
+    .guide {
+      height: 100%;
+    }
+    .example, .guide-text {
       margin-bottom: 5rem;
+    }
+    .title {
+      margin-bottom: 2rem;
     }
   `]
 })
 export class UIGuideComponent {
-  guide: UIGuide = {id: '', name: '', examples: []}
+  guide: UIGuide = {id: '', name: '', examples: [], description: ''}
   
   constructor(
     private sandboxService: UIGuideSandboxService,

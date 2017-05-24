@@ -11,8 +11,8 @@ const GuideIDS: {[id: string]: string[]} = {}
 export class UIGuideBuilder implements UIGuide {
   id: string
   examples: UIGuideExample[] = []
-
-  constructor(public name: string, public module?: NodeModule) {
+  
+  constructor(public name: string, public description: string) {
     const id = slugify(name).toLowerCase()
 
     if (GuideIDS[id]) {
@@ -55,6 +55,6 @@ export class UIGuideBuilder implements UIGuide {
   }
 }
 
-export function uiGuideOn(component: string, module?: NodeModule): UIGuideBuilder {
-  return new UIGuideBuilder(component, module)
+export function uiGuideOn(component: string, description: string): UIGuideBuilder {
+  return new UIGuideBuilder(component, description)
 }

@@ -22,6 +22,7 @@ export interface UIGuideExample {
 export interface UIGuide {
   id: string
   name: string
+  description: string
   examples: UIGuideExample[]
   imports?: any[]
   declarations?: any[]
