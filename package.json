@@ -1,8 +1,8 @@
 {
-  "name": "ui-guide",
+  "name": "@angularclass/dope-docs",
   "version": "0.0.1",
   "description": "Starter to make Angular libs",
-  "main": "ui-guide.js",
+  "main": "dope-docs.js",
   "jsnext:main": "index.js",
   "module": "index.js",
   "types": "index.d.ts",
@@ -17,7 +17,7 @@
     "release": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy"
   },
   "bin": {
-    "ui-guide": "./cli/cli.js"
+    "acdocs": "./cli/cli.js"
   },
   "license": "MIT",
   "devDependencies": {

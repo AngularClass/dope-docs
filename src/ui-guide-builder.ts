@@ -1,14 +1,14 @@
-import { UIGuideSandbox, UIGuide, UIGuideExample, UIGuideExampleConfig, ComponentAPI } from './interfaces'
+import { UIGuideSandbox, UIGuide, UIGuideExample, UIGuideExampleConfig, ComponentAPI, DopeDoc } from './interfaces'
 import { bootstrap } from './boostrap'
 const slugify = require('slugify')
 
-export function createUIGuideSandbox(sandbox: UIGuideSandbox) {
+export function createDopeDocs(sandbox: UIGuideSandbox) {
   bootstrap(sandbox)
 }
 
 const GuideIDS: {[id: string]: string[]} = {}
 
-export class UIGuideBuilder implements UIGuide {
+export class DocsBuilder implements DopeDoc {
   id: string
   examples: UIGuideExample[] = []
 
@@ -23,7 +23,7 @@ export class UIGuideBuilder implements UIGuide {
     this.id = id
   }
 
-  example(name: string, config: UIGuideExampleConfig): this {
+  example(name: string, config: UIGuideExampleConfig): DopeDoc {
     const id = `${this.id}-${slugify(name).toLowerCase()}`
 
     if (GuideIDS[this.id].find(i => i === id)) {
@@ -47,19 +47,19 @@ export class UIGuideBuilder implements UIGuide {
     return this
   }
 
-  xexample(description: string, config: UIGuideExampleConfig){
+  xexample(description: string, config: UIGuideExampleConfig): DopeDoc {
     return this
   }
 
-  Xexample(description: string, config: UIGuideExampleConfig) {
+  Xexample(description: string, config: UIGuideExampleConfig): DopeDoc {
     return this.xexample(description, config)
   }
 }
 
-export function uiGuideOn(
+export function docsFor(
   component: string,
   description: string,
   api: ComponentAPI
-): UIGuideBuilder {
-  return new UIGuideBuilder(component, description, api)
+): DopeDoc {
+  return new DocsBuilder(component, description, api)
 }

@@ -8,7 +8,7 @@ const moduleExternals = require('webpack-node-externals')
 module.exports = (envOptions = {}) => {
   return ({
     entry: {
-      'ui-guide': root('./src/index.ts')
+      'dope-docs': root('./src/index.ts')
     },
     output: {
       path: root('dist'),

@@ -96,6 +96,19 @@ export interface ComponentOuput {
 }
 
 export interface ComponentAPI {
-  inputs: ComponentInput[]
-  outputs: ComponentOuput[]
+  inputs?: ComponentInput[]
+  outputs?: ComponentOuput[]
+}
+
+export interface DopeDoc extends UIGuide {
+  example(name: string, config: UIGuideExampleConfig): DopeDoc
+  xexample(name?: string, config?: UIGuideExampleConfig): DopeDoc
+  Xexample(name?: string, config?: UIGuideExampleConfig): DopeDoc
+}
+
+export declare var DocsBuilder: {
+  new(name: string, description: string, api: ComponentAPI): DopeDoc
+  example(name: string, config: UIGuideExampleConfig): DopeDoc
+  xexample(name?: string, config?: UIGuideExampleConfig): DopeDoc
+  Xexample(name?: string, config?: UIGuideExampleConfig): DopeDoc
 }

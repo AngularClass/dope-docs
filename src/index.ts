@@ -1,2 +1,2 @@
 export * from './interfaces'
-export { uiGuideOn, createUIGuideSandbox, UIGuideBuilder } from './ui-guide-builder'
+export { docsFor, createDopeDocs, DocsBuilder} from './ui-guide-builder'
