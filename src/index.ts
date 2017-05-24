@@ -1,2 +1,2 @@
-export { UIGuideBuildConfig } from './interfaces'
-export { uiGuideOn, createUIGuideSandbox } from './ui-guide-builder'
+export * from './interfaces'
+export { uiGuideOn, createUIGuideSandbox, UIGuideBuilder } from './ui-guide-builder'

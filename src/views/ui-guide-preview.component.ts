@@ -1,7 +1,6 @@
-import { pluck } from 'rxjs/operator/pluck'
 import { Observable } from 'rxjs/Observable'
 import { Component } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Params } from '@angular/router'
 
 @Component({
   selector: 'ui-guide-preview',
@@ -9,12 +8,22 @@ import { ActivatedRoute } from '@angular/router'
     <div class="stage">
       <ui-guide-renderer [exampleId]="id"></ui-guide-renderer>
     </div>
-  `
+  `,
+  styles: [`
+    .stage {
+      height: 100%;
+      padding-top: 5rem;
+    }
+  `]
 })
 export class UIGuidePreviewView {
-  id: string
+  id: string = ''
 
   constructor(route: ActivatedRoute) {
-    this.id = pluck.call(route.params, 'exampleId')
+    route
+    .params
+    .subscribe((params: Params) => {
+      this.id = params['exampleId']
+    })
   }
 }

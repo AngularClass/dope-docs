@@ -3,27 +3,28 @@ import { UIGuideSerivce } from '../services/ui-guide.service'
 import { UIGuide } from '../interfaces'
 
 @Component({
-  selector: 'ui-guide-entry-view',
+  selector: 'ui-guide-router-entry-view',
   template: `
-    <div class="layout">
-      <nav>
-        
-      </nav>
-      <div class="grow">
+    <div class="row">
+      <div class="col-xs-2">
+        <ui-guides-list [uiGuides]="uiGuides"></ui-guides-list>
+      </div>
+      <div class="col-xs">
         <router-outlet></router-outlet>
       </div>
     </div>
   `,
   styles: [`
-    .grow {
-      flex-grow: 5;
+    .conatiner {
+      width: 100%;
+      height: 100%;
     }
   `]
 })
-export class RootContainerComponent {
-  examples: UIGuide[];
+export class UIGuideRouterEntryView {
+  uiGuides: UIGuide[] = []
 
   constructor(uiGuideService: UIGuideSerivce) {
-    this.examples = uiGuideService.getAllUIGuides()
+    this.uiGuides = uiGuideService.getAllUIGuides()
   }
 }

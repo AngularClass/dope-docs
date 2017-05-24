@@ -1,11 +1,11 @@
-import * as chalk from 'chalk'
 import * as webpack from 'webpack'
 import * as WebpackDevServer from 'webpack-dev-server'
 import * as path from 'path'
-import * as HTMLPlugin from 'html-webpack-plugin'
-import * as ProgressPlugin from 'webpack/lib/ProgressPlugin'
 import { UIGuideBuildConfig, DevServerConfig } from '../interfaces'
 import { Configuration } from 'webpack'
+const HTMLPlugin =  require('html-webpack-plugin')
+const ProgressPlugin = require('webpack/lib/ProgressPlugin')
+const chalk = require('chalk')
 
 export function startServer(config: UIGuideBuildConfig) {
   const webpackConfig = config.webpackConfig
@@ -36,10 +36,10 @@ export function startServer(config: UIGuideBuildConfig) {
   }))
 
   compiler.apply(new HTMLPlugin({
-    template: path.resolve(__dirname, './index.html')
+    template: path.resolve(__dirname, '../../index.html')
   }))
 
-  const devServerConfig = {
+  const devServerConfig = Object.assign({}, {
     historyApiFallback: true,
     stats: {
       assets: true,
@@ -51,8 +51,8 @@ export function startServer(config: UIGuideBuildConfig) {
       chunkModules: false
     },
     inline: true,
-    ...serverConfig
-  }
+    
+  }, serverConfig)
 
 
   const server = new WebpackDevServer(compiler, devServerConfig)

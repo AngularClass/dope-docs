@@ -3,7 +3,7 @@ import { UIGuide, ResolvedUIGuideSandbox, UIGuideExample } from './interfaces'
 const flatten = require('lodash.flatten')
 
 export function getModuleForUIGuides(
-  giventModule: ModuleWithProviders | Type<any>,
+  givenModule: ModuleWithProviders | Type<any>,
   uiGuides: UIGuide[]
 ): ResolvedUIGuideSandbox {
 
@@ -14,13 +14,15 @@ export function getModuleForUIGuides(
     }
   })))))
 
+  console.log('components with ids', componentsWithIds)
+
   const components = componentsWithIds.reduce((all, next) => {
     return Object.assign({}, all, {
       [next.id]: next.component
     })
   }, {})
 
-  const ngModule = generateNgModule(giventModule, componentsWithIds.map(e => e.component))
+  const ngModule = generateNgModule(givenModule, componentsWithIds.map(e => e.component))
   return {ngModule, components}
 }
 
@@ -29,7 +31,8 @@ export function generateComponent(
 ): Type<any> {
   @Component({
     template: example.template,
-    styles: example.styles
+    styles: example.styles,
+    providers: [...example.providers]
   })
   class UIGuideExampleComponent {
     constructor() {
@@ -41,12 +44,12 @@ export function generateComponent(
 }
 
 export function generateNgModule(
-  giventModule: ModuleWithProviders | Type<any>,
+  givenModule: ModuleWithProviders | Type<any>,
   components: Type<any>[]
 ): Type<any> {
   @NgModule({
     imports: [
-      giventModule
+      givenModule
     ],
     declarations: [
       ...components

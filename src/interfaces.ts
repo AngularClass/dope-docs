@@ -10,7 +10,10 @@ import {Configuration} from 'webpack'
 export interface UIGuideExample {
   id: string
   description: string
+  name: string
+  uiGuideName: string
   template: string
+  showSource?: boolean
   styles?: string[]
   context?: any
   providers?: any[]
@@ -44,9 +47,11 @@ export interface ResolvedUIGuideSandbox {
 
 export interface UIGuideExampleConfig {
   template: string
+  description: string
   context?: any
-  showSourceCode?: boolean
+  showSource?: boolean
   styles?: string[]
+  providers?: any[]
 }
 
 export interface UIGuideBuildConfig {

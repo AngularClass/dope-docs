@@ -1,9 +1,9 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 import * as program from 'commander'
-import * as pjson from '../package.json'
 import * as path from 'path'
 import * as chalk from 'chalk'
 import { startServer } from './webpack/serve'
+const pjson = require('../package.json')
 
 const serve = (config) => {
   let configPath = config.config || './uiguide'
@@ -11,13 +11,13 @@ const serve = (config) => {
   const parsed = path.parse(configPath) 
   configPath = path.join(parsed.dir, parsed.name)
   try {
-    const configFile = require(configPath)
+    const configFile = require(path.join(process.cwd(), configPath))
+    startServer(configFile)
   } catch (e) {
+    console.log(chalk.red(e.message))
     console.log(chalk.red('Config file not found'))
     process.exit(1)
   }
-  
-  startServer(config)
 }
 
 

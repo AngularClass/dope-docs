@@ -8,8 +8,7 @@ const moduleExternals = require('webpack-node-externals')
 module.exports = (envOptions = {}) => {
   return ({
     entry: {
-      'ui-guide': root('./src/index.ts'),
-      cli: root('./src/cli.ts')
+      'ui-guide': root('./src/index.ts')
     },
     output: {
       path: root('dist'),
@@ -25,6 +24,7 @@ module.exports = (envOptions = {}) => {
         {
           test: /\.ts$/,
           loaders: [
+            {loader: 'shebang-loader'},
             {
               loader: 'awesome-typescript-loader',
               options: {
