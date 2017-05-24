@@ -18,15 +18,14 @@ import {
     <div class="guide">
       <div class="guide-text">
         <div class="title">
-          {{guide.name}}
+          <h2>{{guide.name}}</h2>
         </div>
         <div class="guide-description">
           <p>{{guide.description}}</p>
         </div>
       </div>
       <div class="example" *ngFor="let example of guide.examples">
-        <ui-example [guideExample]="example">
-        </ui-example>
+        <ui-example [guideExample]="example"></ui-example>
       </div>
       <div class="api">
         <ui-api [api]="guide.api"></ui-api>
@@ -35,13 +34,21 @@ import {
   `,
   styles: [`
     .guide {
-      height: 100%;
-    }
+      margin: 0px !important;
+      padding: 2rem 3.5rem;
+    }  
     .example, .guide-text {
       margin-bottom: 5rem;
     }
-    .title {
+    .title, .api {
       margin-bottom: 2rem;
+    }
+    .title {
+      font-size: 3.5rem;
+      font-weight: lighter;
+    }
+    .guide-description {
+      font-size: 1.5rem;
     }
   `]
 })

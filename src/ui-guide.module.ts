@@ -2,25 +2,24 @@ import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { UIGuideSandboxService, UIGuideSerivce } from './services'
-import { UIExampleComponent, UIGuideComponent, UIGudiesListComponent, UIApiComponent } from './components'
+import { UIExampleComponent, UIGuideComponent, UIGudiesListComponent, UIApiComponent, PrismComponent } from './components'
 import { ComponentsView, UIGuidePreviewView, UIGuideRootView, UIGuideRouterEntryView } from './views'
 import { Routing } from './routes'
-
-// import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js'
+import 'prismjs/prism';
+import 'prismjs/components/prism-markup';
 
 @NgModule({
   imports: [
     BrowserModule,
     CommonModule,
     Routing
-    // HighlightJsModule
   ],
   providers: [
     UIGuideSandboxService,
     UIGuideSerivce
-    // HighlightJsService
   ],
   declarations: [
+    PrismComponent,
     UIGudiesListComponent,
     UIExampleComponent,
     UIGuideComponent,

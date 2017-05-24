@@ -6,24 +6,24 @@ import { ComponentAPI } from '../interfaces'
   template: `
     <div class="component-api">
       <div class="inputs" *ngIf="api.inputs.length">
-        <h4 class="title">Inputs</h4>
+        <h2 class="title">Inputs</h2>
         <div class="row labels">
           <div class="col-xs" *ngFor="let inputLabel of inputLabels">
             <small class="label">{{inputLabel}}</small>
           </div>
         </div>
         <div class="row values" *ngFor="let input of api.inputs">
-          <div class="col-xs">
+          <div class="col-xs value">
             {{input.name}}
           </div>
-          <div class="col-xs">
+          <div class="col-xs value">
             {{input.description}}
           </div>
-          <div class="col-xs">
+          <div class="col-xs value">
             {{input.type}}
           </div>
-          <div class="col-xs">
-            {{input.args}}
+          <div class="col-xs value">
+            {{input.default}}
           </div>
         </div>
       </div>
@@ -32,15 +32,23 @@ import { ComponentAPI } from '../interfaces'
   `,
   styles: [`
     .title {
-      
+      font-size: 3.5rem;
+      font-weight: 300;
+      margin-bottom: 3rem;
     }
     .labels {
       border-bottom: .5px solid #6A1B9A;
+      margin-bottom: 2rem;
     }
     .label {
       color: #AB47BC;
       font-weight: 300;
-      border-right: .5px solid #6A1B9A;
+      font-size: 2rem;
+    }
+    .values {
+      margin-bottom: 1.5rem;
+      font-weight: 100;
+      font-size: 1.2rem;
     }
   `]
 })

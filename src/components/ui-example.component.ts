@@ -14,7 +14,7 @@ import {
 @Component({
   selector: 'ui-example',
   template: `
-    <div class="example row">
+    <div class="example">
       <div class="title">
         <h2>{{example.name}}</h2>
       </div>
@@ -25,21 +25,19 @@ import {
         <div #uiGuideExample></div>
       </div>
       <div class="source html" *ngIf="example.showSource">
-        <pre><code>{{example.template}}</code></pre>
+        <prism-block [code]="example.template" language="html"></prism-block>
       </div>
     </div>
   `,
   styles: [`
     .example {
       flex-direction: column;
-      padding-left: 4rem;
-      padding-top: 1.5rem;
     }
     .title {
       margin-bottom: 3rem;
     }
     .title * {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       font-weight: 300;
     }
     .description {
@@ -50,8 +48,7 @@ import {
       font-weight: 100;
     }
     .source {
-      font-size: 1.5rem;
-      background-color: #efefef;
+      font-size: 1.2rem;
     }
     .example-component {
       margin-bottom: 3rem;

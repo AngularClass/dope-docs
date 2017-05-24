@@ -1,27 +1,32 @@
-import { Component } from '@angular/core'
+import { Component, ViewEncapsulation } from '@angular/core'
 import { UIGuideSerivce } from '../services/ui-guide.service'
 import { UIGuide } from '../interfaces'
+import {sizes, media} from '../styles'
+
+const tabletUp = `.main {padding-left: ${sizes.sidbarWidth}; padding-top: 0px;}`
+const phone = `.main {padding-top: ${sizes.navbarHeight}; padding-left: 0px;}`
 
 @Component({
   selector: 'ui-guide-router-entry-view',
   template: `
-    <div class="row entry">
-      <div class="col-xs-2">
-        <ui-guides-list [uiGuides]="uiGuides"></ui-guides-list>
-      </div>
-      <div class="col-xs content">
+    <div class="entry">
+      <ui-guides-list [uiGuides]="uiGuides"></ui-guides-list>
+      <div class="main">
         <router-outlet></router-outlet>
       </div>
     </div>
   `,
   styles: [`
-    .entry {
-      max-height: 100vh;
+    .nav-open .main {
+      display: none;
     }
-    .content {
-      overflow-y: scroll;
+    .main {
+      overflow-x: hidden;
     }
-  `]
+    ${phone}
+    ${media.greaterThanPhone(tabletUp)}
+  `],
+  encapsulation: ViewEncapsulation.None
 })
 export class UIGuideRouterEntryView {
   uiGuides: UIGuide[] = []
