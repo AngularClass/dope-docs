@@ -1,54 +1,74 @@
 import { Component, Input } from '@angular/core'
 import { ComponentAPI } from '../interfaces'
+import { colors, fonts } from '../styles'
+
 
 @Component({
   selector: 'ui-api',
   template: `
     <div class="component-api">
-      <div class="inputs" *ngIf="api.inputs.length">
+      <div class="inputs api" *ngIf="api.inputs.length">
         <h2 class="title">Inputs</h2>
-        <div class="row labels">
-          <div class="col-xs" *ngFor="let inputLabel of inputLabels">
+        <div class="grid labels">
+          <div class="col" *ngFor="let inputLabel of inputLabels">
             <small class="label">{{inputLabel}}</small>
           </div>
         </div>
-        <div class="row values" *ngFor="let input of api.inputs">
-          <div class="col-xs value">
+        <div class="grid values" *ngFor="let input of api.inputs">
+          <div class="col value">
             {{input.name}}
           </div>
-          <div class="col-xs value">
+          <div class="col value">
             {{input.description}}
           </div>
-          <div class="col-xs value">
+          <div class="col value">
             {{input.type}}
           </div>
-          <div class="col-xs value">
+          <div class="col value">
             {{input.default}}
           </div>
         </div>
       </div>
-      <div class="ouputs"></div>
+      <div class="ouputs api" *ngIf="api.outputs.length">
+        <h2 class="title">Outputs</h2>
+        <div class="grid labels">
+          <div class="col" *ngFor="let outputLabel of outputLabels">
+            <small class="label">{{outputLabel}}</small>
+          </div>
+        </div>
+        <div class="grid values" *ngFor="let output of api.outputs">
+          <div class="col value">
+            {{output.name}}
+          </div>
+          <div class="col value">
+            {{output.description}}
+          </div>
+          <div class="col value">
+            {{output.args}}
+          </div>
+        </div>
+      </div>
     </div>
   `,
   styles: [`
     .title {
-      font-size: 3.5rem;
-      font-weight: 300;
+      font-size: ${fonts.sizes.xlarge};
+      font-weight: ${fonts.thickness.light};
       margin-bottom: 3rem;
     }
     .labels {
-      border-bottom: .5px solid #6A1B9A;
+      border-bottom: .5px solid ${colors.accentDark};
       margin-bottom: 2rem;
     }
     .label {
-      color: #AB47BC;
-      font-weight: 300;
-      font-size: 2rem;
+      color: ${colors.accent};
+      font-weight: ${fonts.thickness.light};
+      font-size: ${fonts.sizes.large};
     }
     .values {
       margin-bottom: 1.5rem;
-      font-weight: 100;
-      font-size: 1.2rem;
+      font-weight: ${fonts.thickness.lightest};
+      font-size: ${fonts.sizes.regular};
     }
   `]
 })

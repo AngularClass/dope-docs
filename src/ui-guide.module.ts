@@ -7,6 +7,7 @@ import { ComponentsView, UIGuidePreviewView, UIGuideRootView, UIGuideRouterEntry
 import { Routing } from './routes'
 import 'prismjs/prism';
 import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-typescript';
 
 @NgModule({
   imports: [

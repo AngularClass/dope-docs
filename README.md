@@ -1,10 +1,15 @@
 # Dope Docs
 > Storybook inspired Angular docs generator
 
+
+- [Installing](#installing)
+- [Inspiration](#inspiration)
+- [Contributing](#contributing)
+
 ## Installing
 Dope docs supports Angular 2 and beyond only. Now, lets get your docs going so you can stop procrastinating :100:.
 
-* `yarn @angularclass/dope-docs`
+* `yarn add @angularclass/dope-docs`
 
 Now, none of this will do you any good if you don't have anything to document, so make sure you do. Currently, Dope Docs only supports UI things like `components`, `directives`, `pipes`. There are plans to support non UI things like services soon. Feel free to send a PR for that if you'd like! If you're the curious type and want to know how Dope Docs works, [read here]().
 
@@ -54,8 +59,16 @@ import 'zone.js'
 import { createDopeDocs } from '@angularclass/dope-docs'
 import { UIModule } from './app/ui'
 
+// this takes in all the options needed to bootstrap your dope docs
 createDopeDocs({
+  // The module from your app that has all the components exported.
   ngModule: UIModule,
+  /*
+  * This function must return all the modules in your app that have docs.
+  * Above is an example of how to do so pragmatically using webpack`s `require.context`.
+  * If you're not using Webpack, or want to be explicit, you can just require
+  * every file individually or just import them all up top :sunglasses:
+  */
   loadUIGuides() {
     const context = (require as any).context('./', true, /\.doc\.ts/)
     return context.keys().map(context).map((mod: any) => mod.default)
@@ -63,10 +76,13 @@ createDopeDocs({
 })
 ```
 
-* `ngModule`
-  * The module from your app that has all the components exported.
-* `loadUIGuides`
-  * This function must return all the modules in your app that have docs. Above is an example of how to do so pragmatically using webpack`s `require.context`. If you're not using Webpack, or want to be explicit, you can just require every file individually or just inport them all up top :sunglasses:
+Last step is to setup configuration. Currently
+
+## Inspiration
+* [Component Lab](https://github.com/synapse-wireless-labs/component-lab) We literally copied this and added more features and updated dependencies. 
+* [React Storybook](https://github.com/storybooks/storybook)
+
+## Contributing
 
 
 

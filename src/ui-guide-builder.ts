@@ -12,7 +12,7 @@ export class DocsBuilder implements DopeDoc {
   id: string
   examples: UIGuideExample[] = []
 
-  constructor(public name: string, public description: string, public api: ComponentAPI) {
+  constructor(public name: string, public description: string, public api?: ComponentAPI) {
     const id = slugify(name).toLowerCase()
 
     if (GuideIDS[id]) {
@@ -59,7 +59,7 @@ export class DocsBuilder implements DopeDoc {
 export function docsFor(
   component: string,
   description: string,
-  api: ComponentAPI
+  api: ComponentAPI = {inputs: [], outputs: []}
 ): DopeDoc {
   return new DocsBuilder(component, description, api)
 }
