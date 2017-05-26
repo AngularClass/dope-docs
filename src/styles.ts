@@ -12,7 +12,9 @@ export const sizes = {
 export const colors = {
   white: '#FAFAFA',
   main: '#E91E63',
-  mainDark: '#C2185B'
+  mainDark: '#C2185B',
+  accent: '#AB47BC',
+  accentDark: '#6A1B9A'
 }
 
 export const fonts = {

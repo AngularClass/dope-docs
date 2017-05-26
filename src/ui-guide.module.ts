@@ -2,11 +2,12 @@ import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import { CommonModule } from '@angular/common'
 import { UIGuideSandboxService, UIGuideSerivce } from './services'
-import { UIExampleComponent, UIGuideComponent, UIGudiesListComponent, UIApiComponent, PrismComponent } from './components'
+import { UIExampleComponent, UIGuideComponent, UIGudiesListComponent, UIApiComponent, PrismComponent, MarkdownParser } from './components'
 import { ComponentsView, UIGuidePreviewView, UIGuideRootView, UIGuideRouterEntryView } from './views'
 import { Routing } from './routes'
 import 'prismjs/prism';
 import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-typescript';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import 'prismjs/components/prism-markup';
     UIGuideRootView,
     UIGuidePreviewView,
     ComponentsView,
-    UIApiComponent
+    UIApiComponent,
+    MarkdownParser
   ],
   entryComponents: [
     UIGuidePreviewView,

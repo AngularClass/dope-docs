@@ -1,5 +1,6 @@
 import { UIGuideSandboxService, UIGuideSerivce } from '../services'
 import { UIGuideExample } from '../interfaces'
+import { sizes, fonts } from '../styles'
 import {
   Component,
   ComponentRef,
@@ -24,8 +25,16 @@ import {
       <div class="example-component">
         <div #uiGuideExample></div>
       </div>
-      <div class="source html" *ngIf="example.showSource">
-        <prism-block [code]="example.template" language="html"></prism-block>
+      <div class="source" *ngIf="example.showSource">
+        <prism-block
+          *ngIf="example.context"
+          [code]="generateClassCode(example.context)"
+          language="typescript">
+        </prism-block>
+        <prism-block
+          [code]="generateTemplateCode(example.template)"
+          language="html">
+        </prism-block>
       </div>
     </div>
   `,
@@ -37,18 +46,18 @@ import {
       margin-bottom: 3rem;
     }
     .title * {
-      font-size: 2.5rem;
-      font-weight: 300;
+      font-size: ${fonts.sizes.large};
+      font-weight: ${fonts.thickness.light};
     }
     .description {
       margin-bottom: 3rem;
     }
     .description p {
-      font-size: 1.5rem;
+      font-size: ${fonts.sizes.regular};
       font-weight: 100;
     }
     .source {
-      font-size: 1.2rem;
+      font-size: ${fonts.sizes.regular};
     }
     .example-component {
       margin-bottom: 3rem;
@@ -85,6 +94,37 @@ export class UIExampleComponent implements OnDestroy {
     const {factory, injector} = this.sandboxService.compilerUIGuide(example.id, this.injector)
     this.ref = this.exampleConatiner.createComponent(factory, 0, injector, [])
   }
+  
+  generateClassCode(context: any) {
+    const contextString = Object.keys(context).reduce((final, next) => {
+      let value = context[next]
+      if (value) {
+        value = JSON.stringify(value)
+      }
+      return final += `  ${next} = ${value}\n`
+    }, '\n')
+
+    return `/* host component class */\nclass HostComponent {${contextString}}`
+  }
+
+  generateTemplateCode(template: string) {
+    const templateList = template.split('\n')
+    const baseSpaceCount = templateList[0].search(/\S/)
+    
+    const formattedTemplate = templateList.reduce((final, next) => {
+      const spaces = next.search(/\S/)
+      const diff = baseSpaceCount - spaces
+      let s = next.trim()
+
+      if (diff && diff > 0) {
+        s = new Array(diff + 1) + s
+      }
+      final += s + '\n'
+      return final
+    }, '\n')
+    return `<!-- host component template -->\n${template}`
+  }
+
 
   ngOnDestroy() {
     this.refresh()

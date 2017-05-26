@@ -1,6 +1,13 @@
 import { Component, Input, Renderer2, Inject } from '@angular/core'
 import { sizes, colors, fonts, media, constants } from '../styles'
 import { DOCUMENT } from '@angular/platform-browser'
+import {
+  trigger,
+  style,
+  state,
+  animate,
+  transition
+} from '@angular/animations'
 
 @Component({
   selector: 'ui-guides-list',
@@ -98,7 +105,7 @@ import { DOCUMENT } from '@angular/platform-browser'
       transition: background-color .1s ease-in;
     }
     .item {
-      font-size: ${fonts.sizes.small};
+      font-size: ${fonts.sizes.regular};
       font-weight: ${fonts.thickness.light};
       padding: .5rem 1rem;
       line-height: ${fonts.sizes.regular};
@@ -108,10 +115,19 @@ import { DOCUMENT } from '@angular/platform-browser'
     .item:hover, .item.active, .title:hover, .title.active {
       background-color: ${colors.mainDark};
     }
-  `]
+  `],
+  // animations: [
+  //   trigger('slideTrigger', [
+  //     state('open', style({width: sizes.sidbarWidth})),
+  //     state('closed', style({width: '0px'})),
+  //     transition('closed => open', animate('200ms ease-in')),
+  //     transition('open => closed', animate('200ms 200ms ease-out'))
+  //   ])
+  // ]
 })
 export class UIGudiesListComponent {
   showNav = false
+  navState = 'closed'
   @Input() uiGuides = []
   
 
@@ -123,10 +139,12 @@ export class UIGudiesListComponent {
   openNav() {
     this.renderer.addClass(this.docuemnt.body, 'nav-open')
     this.showNav = true
+    // this.navState = 'open'
   }
 
   closeNav() {
     this.renderer.removeClass(this.docuemnt.body, 'nav-open')
     this.showNav = false
+    // this.navState = 'closed'
   }
 }

@@ -23,8 +23,8 @@ export interface UIGuide {
   id: string
   name: string
   description: string
-  api: ComponentAPI
   examples: UIGuideExample[]
+  api?: ComponentAPI
   imports?: any[]
   declarations?: any[]
   providers?: any[]
@@ -38,6 +38,7 @@ export interface CompiledUIGuide {
 
 export interface UIGuideSandbox {
   module?: NodeModule
+  entryMarkdown: string
   ngModule: Type<any> | ModuleWithProviders
   loadUIGuides(): UIGuide[]
 };
@@ -107,7 +108,7 @@ export interface DopeDoc extends UIGuide {
 }
 
 export declare var DocsBuilder: {
-  new(name: string, description: string, api: ComponentAPI): DopeDoc
+  new(name: string, description: string, api?: ComponentAPI): DopeDoc
   example(name: string, config: UIGuideExampleConfig): DopeDoc
   xexample(name?: string, config?: UIGuideExampleConfig): DopeDoc
   Xexample(name?: string, config?: UIGuideExampleConfig): DopeDoc

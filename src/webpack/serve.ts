@@ -3,6 +3,7 @@ import * as WebpackDevServer from 'webpack-dev-server'
 import * as path from 'path'
 import { UIGuideBuildConfig, DevServerConfig } from '../interfaces'
 import { Configuration } from 'webpack'
+
 const HTMLPlugin =  require('html-webpack-plugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin')
 const chalk = require('chalk')
