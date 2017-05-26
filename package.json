@@ -1,7 +1,7 @@
 {
   "name": "@angularclass/dope-docs",
   "version": "0.0.1",
-  "description": "Starter to make Angular libs",
+  "description": "Document and styleguide generator for your Angular projects",
   "main": "dope-docs.js",
   "jsnext:main": "index.js",
   "module": "index.js",
@@ -16,6 +16,12 @@
     "copy": "cp package.json dist && cp README.md dist && cp src/webpack/index.html dist/index.html && cp -R src/assets dist",
     "release": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy"
   },
+  "bugs": "https://github.com/AngularClass/dope-docs/issues",
+  "repository": {
+    "url": "https://github.com/AngularClass/dope-docs",
+    "type": "git"
+  },
+  "author": "Scott Moss <scott@angularclass.com>",
   "bin": {
     "acdocs": "./cli/cli.js"
   },
