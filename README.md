@@ -76,7 +76,18 @@ createDopeDocs({
 })
 ```
 
-Last step is to setup configuration. Currently
+Last step is to setup configuration. Create a `dope.js` on your root file.
+
+```js
+module.exports = {
+  // your webpack config. Will be used to build the app.
+  webpackConfig: require('./webpack.config')
+  // the path to the Dope docs entry file you created above
+  entry: './src/dope-docs.ts'
+}
+```
+
+
 
 ## Inspiration
 * [Component Lab](https://github.com/synapse-wireless-labs/component-lab) We literally copied this and added more features and updated dependencies. 
