@@ -38,6 +38,7 @@ export interface CompiledUIGuide {
 
 export interface UIGuideSandbox {
   module?: NodeModule
+  entryMarkdown: string
   ngModule: Type<any> | ModuleWithProviders
   loadUIGuides(): UIGuide[]
 };
