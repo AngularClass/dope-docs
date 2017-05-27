@@ -16,7 +16,7 @@
     "copy": "cp package.json dist && cp README.md dist && cp src/webpack/index.html dist/index.html && cp -R src/assets dist",
     "package": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy",
     "tags": "git add . && git push origin master && git push --tags",
-    "bump": "npm version minor -m\"upgrade to %s\"",
+    "bump": "npm version patch -m\"upgrade to %s\"",
     "release": "npm run bump && npm run tags && npm run package && npm publish dist/ --access public"
   },
   "bugs": "https://github.com/AngularClass/dope-docs/issues",
