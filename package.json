@@ -1,6 +1,6 @@
 {
   "name": "@angularclass/dope-docs",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Document and styleguide generator for your Angular projects",
   "main": "dope-docs.js",
   "jsnext:main": "index.js",
@@ -15,7 +15,7 @@
     "build": "rimraf build && npm run build:esm && npm run build:bundle && npm run build:aot",
     "copy": "cp package.json dist && cp README.md dist && cp src/webpack/index.html dist/index.html && cp -R src/assets dist",
     "release:ready": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy",
-    "postversion": "git add . && git push && git push --tags",
+    "postversion": "git add . && git push origin master && git push --tags",
     "prepublish": "npm run release:ready && npm version minor -m\"upgrade to %s\"",
     "release": "npm publish --access public"
   },
