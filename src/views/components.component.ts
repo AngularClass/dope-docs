@@ -3,8 +3,9 @@ import { ENTRY_MARKDOWN } from '../services'
 @Component({
   selector: 'ui-guide-components-view',
   template: `
-  
-    <dope-docs-markdown [markdown]="entryMarkdown"></dope-docs-markdown>
+    <div class="entryComponent">
+      <dope-docs-markdown [markdown]="entryMarkdown"></dope-docs-markdown>
+    </div>
   `,
   encapsulation: ViewEncapsulation.None,
   styles: [`
@@ -18,146 +19,116 @@ import { ENTRY_MARKDOWN } from '../services'
     text-shadow: none !important;
   }
 
-  a,
-  a:visited {
+  .entryComponent a,
+  .entryComponent a:visited {
     text-decoration: underline;
   }
 
-  a[href]:after {
+  .entryComponent a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  abbr[title]:after {
+  .entryComponent abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
+  .entryComponent a[href^="#"]:after,
+  .entryComponent a[href^="javascript:"]:after {
     content: "";
   }
 
-  pre,
-  blockquote {
+  .entryComponent pre,
+  .entryComponent blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  thead {
+  .entryComponent thead {
     display: table-header-group;
   }
 
-  tr,
-  img {
+  .entryComponent tr,
+  .entryComponent img {
     page-break-inside: avoid;
   }
 
-  img {
+  .entryComponent img {
     max-width: 100% !important;
   }
 
-  p,
-  h2,
-  h3 {
+  .entryComponent p,
+  .entryComponent h2,
+  .entryComponent h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2,
-  h3 {
+  .entryComponent h2,
+  .entryComponent h3 {
     page-break-after: avoid;
   }
 }
 
-html {
-  font-size: 12px;
-}
-
-@media screen and (min-width: 32rem) and (max-width: 48rem) {
-  html {
-    font-size: 15px;
-  }
-}
-
-@media screen and (min-width: 48rem) {
-  html {
-    font-size: 16px;
-  }
-}
-
-body {
+.entryComponent {
   line-height: 1.85;
 }
 
-p,
-.air-p {
+.entryComponent p {
   font-size: 1rem;
   margin-bottom: 1.3rem;
 }
 
-h1,
-.air-h1,
-h2,
-.air-h2,
-h3,
-.air-h3,
-h4,
-.air-h4 {
+.entryComponent h1,
+.entryComponent h2,
+.entryComponent h3,
+.entryComponent h4 {
   margin: 1.414rem 0 .5rem;
   font-weight: inherit;
   line-height: 1.42;
 }
 
-h1,
-.air-h1 {
+.entryComponent h1 {
   margin-top: 0;
   font-size: 3.998rem;
 }
 
-h2,
-.air-h2 {
+.entryComponent h2 {
   font-size: 2.827rem;
 }
 
-h3,
-.air-h3 {
+.entryComponent h3 {
   font-size: 1.999rem;
 }
 
-h4,
-.air-h4 {
+.entryComponent h4 {
   font-size: 1.414rem;
 }
 
-h5,
-.air-h5 {
+.entryComponent h5 {
   font-size: 1.121rem;
 }
 
-h6,
-.air-h6 {
+.entryComponent h6 {
   font-size: .88rem;
 }
 
-small,
-.air-small {
+.entryComponent small {
   font-size: .707em;
 }
 
 /* https://github.com/mrmrs/fluidity */
 
-img,
-canvas,
-iframe,
-video,
-svg,
-select,
-textarea {
+.entryComponent img,
+.entryComponent canvas,
+.entryComponent iframe,
+.entryComponent video,
+.entryComponent svg,
+.entryComponent select,
+.entryComponent textarea {
   max-width: 100%;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300);
-
-body {
+.entryComponent {
   color: #444;
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-weight: 300;
@@ -165,31 +136,31 @@ body {
   text-align: center;
 }
 
-img {
+.entryComponent img {
   border-radius: 50%;
   height: 200px;
   margin: 0 auto;
   width: 200px;
 }
 
-a,
-a:visited {
+.entryComponent a,
+.entryComponent a:visited {
   color: #3498db;
 }
 
-a:hover,
-a:focus,
-a:active {
+.entryComponent a:hover,
+.entryComponent a:focus,
+.entryComponent a:active {
   color: #2980b9;
 }
 
-pre {
+.entryComponent pre {
   background-color: #fafafa;
   padding: 1rem;
   text-align: left;
 }
 
-blockquote {
+.entryComponent blockquote {
   margin: 0;
   border-left: 5px solid #7a7a7a;
   font-style: italic;
@@ -197,13 +168,13 @@ blockquote {
   text-align: left;
 }
 
-ul,
-ol,
-li {
+.entryComponent ul,
+.entryComponent ol,
+.entryComponent li {
   text-align: left;
 }
 
-p {
+.entryComponent p {
   color: #777;
 }
   `]
