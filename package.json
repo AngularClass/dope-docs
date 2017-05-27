@@ -17,7 +17,7 @@
     "release:ready": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy",
     "postversion": "git add . && git push origin master && git push --tags",
     "prepublish": "npm run release:ready && npm version minor -m\"upgrade to %s\"",
-    "release": "npm publish ./dist --access public"
+    "release": "npm publish dist/ --access public"
   },
   "bugs": "https://github.com/AngularClass/dope-docs/issues",
   "repository": {
