@@ -8,7 +8,7 @@ import * as marked from 'marked';
   `,
   encapsulation: ViewEncapsulation.None
 })
-export class MarkdownParser {
+export class MarkdownComponent {
   @Input() markdown: string = ''
   parsedMarkdown: string;
 
