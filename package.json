@@ -14,9 +14,9 @@
     "build:aot": "ngc",
     "build": "rimraf build && npm run build:esm && npm run build:bundle && npm run build:aot",
     "copy": "cp package.json dist && cp README.md dist && cp src/webpack/index.html dist/index.html && cp -R src/assets dist",
-    "release:ready": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy",
-    "postversion": "git add . && git push origin master && git push --tags",
-    "prepublish": "npm run release:ready && npm version minor -m\"upgrade to %s\"",
+    "package": "rm -rf build && npm run build:esm && npm run build:bundle && npm run build:cli && npm run copy",
+    "postversion": "git add . && git push origin master && git push --tags && npm run patch",
+    "prepublish": "npm version minor -m\"upgrade to %s\"",
     "release": "npm publish dist/ --access public"
   },
   "bugs": "https://github.com/AngularClass/dope-docs/issues",
