@@ -1,6 +1,6 @@
 {
   "name": "@angularclass/dope-docs",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Document and styleguide generator for your Angular projects",
   "main": "dope-docs.js",
   "jsnext:main": "index.js",
