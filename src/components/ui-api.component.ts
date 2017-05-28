@@ -15,10 +15,10 @@ import { colors, fonts } from '../styles'
           </div>
         </div>
         <div class="grid values" *ngFor="let input of api.inputs">
-          <div class="col-1 value">
+          <div class="col-2 value">
             {{input.name}}
           </div>
-          <div class="col-6 value">
+          <div class="col-5 value">
             {{input.description}}
           </div>
           <div class="col-2 value">
@@ -37,10 +37,10 @@ import { colors, fonts } from '../styles'
           </div>
         </div>
         <div class="grid values" *ngFor="let output of api.outputs">
-          <div class="col-1 value">
+          <div class="col-2 value">
             {{output.name}}
           </div>
-          <div class="col-6 value">
+          <div class="col-5 value">
             {{output.description}}
           </div>
           <div class="col-5 value">
@@ -80,16 +80,16 @@ export class UIApiComponent {
   
   getColForOutputs(outputLabel: string) {
     return {
-      name: 'col-1',
-      description: 'col-6',
+      name: 'col-2',
+      description: 'col-5',
       args: 'col-5'
     }[outputLabel]
   }
 
   getColForInputs(inputLabel: string) {
     return {
-      name: 'col-1',
-      description: 'col-6',
+      name: 'col-2',
+      description: 'col-5',
       type: 'col-2',
       default: 'col-3'
     }[inputLabel]
