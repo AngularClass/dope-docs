@@ -3,7 +3,7 @@ import { ENTRY_MARKDOWN } from '../services'
 @Component({
   selector: 'ui-guide-components-view',
   template: `
-    <div class="entryComponent">
+    <div class="entry-component">
       <dope-docs-markdown [markdown]="entryMarkdown"></dope-docs-markdown>
     </div>
   `,
@@ -19,148 +19,148 @@ import { ENTRY_MARKDOWN } from '../services'
     text-shadow: none !important;
   }
 
-  .entryComponent a,
-  .entryComponent a:visited {
+  .entry-component a,
+  .entry-component a:visited {
     text-decoration: underline;
   }
 
-  .entryComponent a[href]:after {
+  .entry-component a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  .entryComponent abbr[title]:after {
+  .entry-component abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  .entryComponent a[href^="#"]:after,
-  .entryComponent a[href^="javascript:"]:after {
+  .entry-component a[href^="#"]:after,
+  .entry-component a[href^="javascript:"]:after {
     content: "";
   }
 
-  .entryComponent pre,
-  .entryComponent blockquote {
+  .entry-component pre,
+  .entry-component blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  .entryComponent thead {
+  .entry-component thead {
     display: table-header-group;
   }
 
-  .entryComponent tr,
-  .entryComponent img {
+  .entry-component tr,
+  .entry-component img {
     page-break-inside: avoid;
   }
 
-  .entryComponent img {
+  .entry-component img {
     max-width: 100% !important;
   }
 
-  .entryComponent p,
-  .entryComponent h2,
-  .entryComponent h3 {
+  .entry-component p,
+  .entry-component h2,
+  .entry-component h3 {
     orphans: 3;
     widows: 3;
   }
 
-  .entryComponent h2,
-  .entryComponent h3 {
+  .entry-component h2,
+  .entry-component h3 {
     page-break-after: avoid;
   }
 }
 
-.entryComponent {
+.entry-component {
   line-height: 1.85;
 }
 
-.entryComponent p {
+.entry-component p {
   font-size: 1rem;
   margin-bottom: 1.3rem;
 }
 
-.entryComponent h1,
-.entryComponent h2,
-.entryComponent h3,
-.entryComponent h4 {
+.entry-component h1,
+.entry-component h2,
+.entry-component h3,
+.entry-component h4 {
   margin: 1.414rem 0 .5rem;
   font-weight: inherit;
   line-height: 1.42;
 }
 
-.entryComponent h1 {
+.entry-component h1 {
   margin-top: 0;
   font-size: 3.998rem;
 }
 
-.entryComponent h2 {
+.entry-component h2 {
   font-size: 2.827rem;
 }
 
-.entryComponent h3 {
+.entry-component h3 {
   font-size: 1.999rem;
 }
 
-.entryComponent h4 {
+.entry-component h4 {
   font-size: 1.414rem;
 }
 
-.entryComponent h5 {
+.entry-component h5 {
   font-size: 1.121rem;
 }
 
-.entryComponent h6 {
+.entry-component h6 {
   font-size: .88rem;
 }
 
-.entryComponent small {
+.entry-component small {
   font-size: .707em;
 }
 
 /* https://github.com/mrmrs/fluidity */
 
-.entryComponent img,
-.entryComponent canvas,
-.entryComponent iframe,
-.entryComponent video,
-.entryComponent svg,
-.entryComponent select,
-.entryComponent textarea {
+.entry-component img,
+.entry-component canvas,
+.entry-component iframe,
+.entry-component video,
+.entry-component svg,
+.entry-component select,
+.entry-component textarea {
   max-width: 100%;
 }
 
-.entryComponent {
+.entry-component {
   color: #444;
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-weight: 300;
-  margin: 6rem auto 1rem;
-  text-align: center;
+  padding: 2.5rem;
+  margin: 0px;
 }
 
-.entryComponent img {
+.entry-component img {
   border-radius: 50%;
   height: 200px;
   margin: 0 auto;
   width: 200px;
 }
 
-.entryComponent a,
-.entryComponent a:visited {
+.entry-component a,
+.entry-component a:visited {
   color: #3498db;
 }
 
-.entryComponent a:hover,
-.entryComponent a:focus,
-.entryComponent a:active {
+.entry-component a:hover,
+.entry-component a:focus,
+.entry-component a:active {
   color: #2980b9;
 }
 
-.entryComponent pre {
+.entry-component pre {
   background-color: #fafafa;
   padding: 1rem;
   text-align: left;
 }
 
-.entryComponent blockquote {
+.entry-component blockquote {
   margin: 0;
   border-left: 5px solid #7a7a7a;
   font-style: italic;
@@ -168,13 +168,13 @@ import { ENTRY_MARKDOWN } from '../services'
   text-align: left;
 }
 
-.entryComponent ul,
-.entryComponent ol,
-.entryComponent li {
+.entry-component ul,
+.entry-component ol,
+.entry-component li {
   text-align: left;
 }
 
-.entryComponent p {
+.entry-component p {
   color: #777;
 }
   `]

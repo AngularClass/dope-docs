@@ -10,21 +10,21 @@ import { colors, fonts } from '../styles'
       <div class="inputs api" *ngIf="api.inputs.length">
         <h2 class="title">Inputs</h2>
         <div class="grid labels">
-          <div class="col" *ngFor="let inputLabel of inputLabels">
+          <div [ngClass]="getColForInputs(inputLabel)" *ngFor="let inputLabel of inputLabels">
             <small class="label">{{inputLabel}}</small>
           </div>
         </div>
         <div class="grid values" *ngFor="let input of api.inputs">
-          <div class="col value">
+          <div class="col-1 value">
             {{input.name}}
           </div>
-          <div class="col value">
+          <div class="col-6 value">
             {{input.description}}
           </div>
-          <div class="col value">
+          <div class="col-2 value">
             {{input.type}}
           </div>
-          <div class="col value">
+          <div class="col-3 value">
             {{input.default}}
           </div>
         </div>
@@ -32,18 +32,18 @@ import { colors, fonts } from '../styles'
       <div class="ouputs api" *ngIf="api.outputs.length">
         <h2 class="title">Outputs</h2>
         <div class="grid labels">
-          <div class="col" *ngFor="let outputLabel of outputLabels">
+          <div [ngClass]="getColForOutputs(outputLabel)" *ngFor="let outputLabel of outputLabels">
             <small class="label">{{outputLabel}}</small>
           </div>
         </div>
         <div class="grid values" *ngFor="let output of api.outputs">
-          <div class="col value">
+          <div class="col-1 value">
             {{output.name}}
           </div>
-          <div class="col value">
+          <div class="col-6 value">
             {{output.description}}
           </div>
-          <div class="col value">
+          <div class="col-5 value">
             {{output.args}}
           </div>
         </div>
@@ -77,4 +77,21 @@ export class UIApiComponent {
   outputLabels = ['name', 'description', 'args']
 
   @Input() api: ComponentAPI = {inputs: [], outputs: []}
+  
+  getColForOutputs(outputLabel: string) {
+    return {
+      name: 'col-1',
+      description: 'col-6',
+      args: 'col-5'
+    }[outputLabel]
+  }
+
+  getColForInputs(inputLabel: string) {
+    return {
+      name: 'col-1',
+      description: 'col-6',
+      type: 'col-2',
+      default: 'col-3'
+    }[inputLabel]
+  }
 }
