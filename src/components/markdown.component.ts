@@ -19,7 +19,7 @@ export class MarkdownComponent {
     
     // nest code block within pre tags
     renderer.code = (code, lang) => {
-      return `<pre><code>${code}</code></pre>`;
+      return `<pre class="language-${lang}"><code class="language-${lang}">${code}</code></pre>`;
     }
 
     // nest inline code block within pre tags
