@@ -1,8 +1,6 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core'
 import * as marked from 'marked';
 
-
-
 @Component({
   selector: 'dope-docs-markdown',
   template: `
