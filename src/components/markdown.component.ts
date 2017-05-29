@@ -20,12 +20,12 @@ export class MarkdownComponent {
     const renderer = new marked.Renderer();
     
     // nest code block within pre tags
-    renderer.code = function (code, lang) {
+    renderer.code = (code, lang) => {
       return `<pre><code>${code}</code></pre>`;
     }
 
     // nest inline code block within pre tags
-    renderer.codespan = function (code) {
+    renderer.codespan = (code) => {
       return `<pre><code>${code}</code></pre>`;
     }
     this.md = marked.setOptions({
