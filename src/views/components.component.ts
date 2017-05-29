@@ -180,5 +180,5 @@ import { ENTRY_MARKDOWN } from '../services'
   `]
 })
 export class ComponentsView {
-  constructor(@Inject(ENTRY_MARKDOWN) public entryMarkdown: string) { }
+  constructor(@Inject(ENTRY_MARKDOWN) public entryMarkdown: string) {}
 }
