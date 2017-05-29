@@ -10,18 +10,35 @@ import * as marked from 'marked';
 })
 export class MarkdownComponent {
   @Input() markdown: string = ''
+  md: any
   parsedMarkdown: string;
 
-  ngOnChanges() {
-    const md = marked.setOptions({
+  constructor() {
+    // hijack the renderer
+    const renderer = new marked.Renderer();
+    
+    // nest code block within pre tags
+    renderer.code = (code, lang) => {
+      return `<pre class="language-${lang}"><code class="language-${lang}">${code}</code></pre>`;
+    }
+
+    // nest inline code block within pre tags
+    renderer.codespan = (code) => {
+      return `<pre><code>${code}</code></pre>`;
+    }
+    this.md = marked.setOptions({
       gfm: true,
       tables: true,
       breaks: false,
       pedantic: false,
       sanitize: true,
       smartLists: true,
-      smartypants: false
+      smartypants: false,
+      renderer: renderer
     });
-    this.parsedMarkdown = md.parse(this.markdown || '');
+  }
+
+  ngOnChanges() {
+    this.parsedMarkdown = this.md.parse(this.markdown || '');
   }
 }
