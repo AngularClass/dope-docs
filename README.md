@@ -75,6 +75,7 @@ Because DopeDocs is an Angular app, it must be bootstrapped with all your exampl
 import 'core-js'
 import 'zone.js'
 
+import { FormsModule } from '@angular/forms'
 import { createDopeDocs } from '@angularclass/dope-docs'
 import { UIModule } from './app/ui'
 
@@ -87,6 +88,14 @@ createDopeDocs({
   * This is the markdown for your Docs entry route. Will be the landing page
   */
   entryMarkdown: `# My Teams' Components`,
+
+  /*
+  * Any NgModules your NgModule will need. Great if your project is a library
+  * and depends on the host app for these modules
+  */
+  ngModuleImports: [
+    FormsModule
+  ],
   /*
   * This function must return all the modules in your app that have docs.
   * Above is an example of how to do so pragmatically using webpack`s `require.context`.
