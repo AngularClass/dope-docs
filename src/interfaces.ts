@@ -37,9 +37,9 @@ export interface CompiledUIGuide {
 }
 
 export interface UIGuideSandbox {
-  module?: NodeModule
   entryMarkdown: string
-  ngModule: Type<any> | ModuleWithProviders
+  ngModule: Type<any>
+  ngModuleImports?: Type<any>[]
   loadUIGuides(): UIGuide[]
 };
 
