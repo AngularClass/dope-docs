@@ -12,7 +12,7 @@ export function bootstrap(sandBox: UIGuideSandbox): Promise<NgModuleRef<UIGuideM
   /** grab all the ui guides */
   const uiGuides = sandBox.loadUIGuides()
   /** resolve all the ui guide components and ng module */
-  const resolved = getModuleForUIGuides(sandBox.ngModule, uiGuides)
+  const resolved = getModuleForUIGuides(sandBox.ngModule, uiGuides, sandBox.ngModuleImports)
   /** this is the markdown used in your index page */
   const entryMarkdown = sandBox.entryMarkdown
   
