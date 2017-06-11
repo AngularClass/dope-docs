@@ -61,5 +61,32 @@ export function docsFor(
   description: string,
   api: ComponentAPI = {inputs: [], outputs: []}
 ): DopeDoc {
+  api = addNA(api);
   return new DocsBuilder(component, description, api)
+}
+
+function addNA(docsObj) {
+    let { inputs, outputs } = docsObj;
+    let parsedInputs;
+    let parsedOutputs;
+    const defaultString = 'n/a';
+    if (inputs) {
+        parsedInputs = inputs.map((val) => {
+            if (!val.default || val.default.length <= 1){
+                val.default = defaultString;
+            }
+            return val;
+        })
+    }
+
+    if (outputs) {
+        parsedOutputs = outputs.map((val) => {
+            if (!val.args || val.args.length <= 1) {
+                val.args = defaultString;
+            }
+            return val;
+        })
+    }
+
+    return docsObj = {inputs: parsedInputs, outputs: parsedOutputs};
 }
