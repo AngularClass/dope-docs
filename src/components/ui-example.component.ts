@@ -70,7 +70,7 @@ export class UIExampleComponent implements OnDestroy {
 
   @ViewChild('uiGuideExample', {read: ViewContainerRef})
   public exampleConatiner: ViewContainerRef
-  
+
   constructor(
     private sandboxService: UIGuideSandboxService,
     private uiGuideService: UIGuideSerivce,
@@ -94,12 +94,12 @@ export class UIExampleComponent implements OnDestroy {
     const {factory, injector} = this.sandboxService.compilerUIGuide(example.id, this.injector)
     this.ref = this.exampleConatiner.createComponent(factory, 0, injector, [])
   }
-  
+
   generateClassCode(context: any) {
     const contextString = Object.keys(context).reduce((final, next) => {
       let value = context[next]
       if (value) {
-        value = JSON.stringify(value)
+        value = value.toString()
       }
       return final += `  ${next} = ${value}\n`
     }, '\n')
@@ -110,7 +110,7 @@ export class UIExampleComponent implements OnDestroy {
   generateTemplateCode(template: string) {
     const templateList = template.split('\n')
     const baseSpaceCount = templateList[0].search(/\S/)
-    
+
     const formattedTemplate = templateList.reduce((final, next) => {
       const spaces = next.search(/\S/)
       const diff = baseSpaceCount - spaces
